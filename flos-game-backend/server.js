@@ -19,7 +19,7 @@ const onConnection = (socket) => {
 io.on("connection", onConnection);
 
 
-const PORT = 3000
+const PORT = 8080
 httpServer.listen(PORT, (err) => {
     if(err) return console.error("Error while intiate the server")
     console.log("Server start listening on port", PORT)
