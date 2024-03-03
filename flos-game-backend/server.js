@@ -20,7 +20,7 @@ io.on("connection", onConnection);
 
 
 const PORT = 8080
-httpServer.listen(PORT, (err) => {
+httpServer.listen(PORT, '0.0.0.0', (err) => {
     if(err) return console.error("Error while intiate the server")
     console.log("Server start listening on port", PORT)
 })
