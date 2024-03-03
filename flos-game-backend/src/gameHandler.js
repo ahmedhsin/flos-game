@@ -70,6 +70,9 @@ export default (io, socket) => {
         }
     })
 
+    socket.on('send emoji', (emojiName) => {
+        io.to(socket.gameId).emit('emoji', emojiName);
+    })
 
     socket.on('disconnect', () => {
         socket.leave(socket.gameId);

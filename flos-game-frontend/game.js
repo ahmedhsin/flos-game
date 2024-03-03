@@ -5,6 +5,10 @@ drawingPlayerCards,
 playerWinCards,
 playerLoseCards,
 globalCards,
+setEmojis,
+drawingEmojiAnimation,
+cardSound,
+emojiSounds
 
 } from './helpers/cards.js'
 let playerIndex = null;
@@ -118,6 +122,10 @@ function gameEnd(state, score){
     inputBox.style.display = 'block';
 }
 
+socket.on("emoji", (emoji) => {
+    drawingEmojiAnimation(emoji);
+})
+
 socket.on('game leave', () => {
     gameEnd('leave')
     socket.emit('leave')
@@ -125,16 +133,21 @@ socket.on('game leave', () => {
 socket.on('update-ui-finish', (winnerIndex, score)=>{
     if (score[0] === score[1])
         gameEnd('draw', score)
-    else if (playerIndex === winnerIndex)
+    else if (playerIndex === winnerIndex){
         gameEnd('win', score)
-    else
+        cardSound['win'].play();
+    }
+    else{
         gameEnd('lose', score)
+        cardSound['lose'].play();
+    }
     socket.emit('leave')
 })
 socket.on("init game", async (data, pIndex) => {
+    playerIndex = pIndex;
     removeInputBox();
     setMainCard(scene);
-    playerIndex = pIndex;
+    setEmojis(playerIndex, scene);
     if (playerIndex == 1){
         camera.rotation.z = Math.PI
     }
@@ -173,6 +186,9 @@ function onClick(event) {
         const card = intersects[0].object
         if (card.name === "card" && card.playerIndex === playerIndex){
             socket.emit('playCard', card.index)
+            cardSound['drop'].play();
+        }else if (card.isEmoji){
+            socket.emit('send emoji', card.name);
         }
     }
 }
