@@ -7,7 +7,8 @@ const httpServer = http.createServer();
 const io = new Server(httpServer, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST"],
+    credentials: true
   }
 })
 
@@ -19,7 +20,7 @@ const onConnection = (socket) => {
 io.on("connection", onConnection);
 
 
-const PORT = 8080
+const PORT = 80
 httpServer.listen(PORT, '0.0.0.0', (err) => {
     if(err) return console.error("Error while intiate the server")
     console.log("Server start listening on port", PORT)
