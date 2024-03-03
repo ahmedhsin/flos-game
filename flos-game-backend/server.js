@@ -1,12 +1,12 @@
 #!/usr/bin/node
 import http from 'http'
 import { Server } from "socket.io";
-import cors from 'cors'
 import  gameHandler  from "./src/gameHandler.js"
+const port = process.env.PORT || 4000;
 const httpServer = http.createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: "https://ahmedhsin.github.io",
+    origin: ["https://ahmedhsin.github.io"],
     methods: ["GET", "POST"],
     credentials: true
   }
@@ -20,8 +20,8 @@ const onConnection = (socket) => {
 io.on("connection", onConnection);
 
 
-const PORT = 5000
-httpServer.listen(PORT, '0.0.0.0', (err) => {
+
+httpServer.listen(port, (err) => {
     if(err) return console.error("Error while intiate the server")
-    console.log("Server start listening on port", PORT)
+    console.log("Server start listening on port", port)
 })
