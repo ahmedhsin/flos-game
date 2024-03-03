@@ -4,8 +4,8 @@ import { renderer } from '../sceneSetup.js';
 import {mainCardPosition, playersPositions, boardPositions, playerRepo} from './positions.js'
 const globalCards = {}
 function createCard(width, height, cardNum, index) {
-  const frontTexture = new THREE.TextureLoader().load(`static/cards/${cardNum}.png`);
-  const backTexture = new THREE.TextureLoader().load('static/cards/purple_back.png');
+  const frontTexture = new THREE.TextureLoader().load(`cards/${cardNum}.png`);
+  const backTexture = new THREE.TextureLoader().load('cards/purple_back.png');
   frontTexture.anisotropy = renderer.capabilities.getMaxAnisotropy()
   backTexture.anisotropy = renderer.capabilities.getMaxAnisotropy()
 
@@ -29,8 +29,8 @@ function createCard(width, height, cardNum, index) {
   return card
 }
 function changeTexture(card, cardNum){
-  const frontTexture = new THREE.TextureLoader().load(`static/cards/${cardNum}.png`);
-  const backTexture = new THREE.TextureLoader().load(`static/cards/red_back.png`);
+  const frontTexture = new THREE.TextureLoader().load(`cards/${cardNum}.png`);
+  const backTexture = new THREE.TextureLoader().load(`cards/red_back.png`);
   frontTexture.anisotropy = renderer.capabilities.getMaxAnisotropy()
   backTexture.anisotropy = renderer.capabilities.getMaxAnisotropy()
   card.material[4] = new THREE.MeshBasicMaterial({ map: frontTexture });
