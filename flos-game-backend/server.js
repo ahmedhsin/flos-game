@@ -6,7 +6,7 @@ import  gameHandler  from "./src/gameHandler.js"
 const httpServer = http.createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: "ahmedhsin.github.io",
+    origin: "https://ahmedhsin.github.io",
     methods: ["GET", "POST"],
     credentials: true
   }
