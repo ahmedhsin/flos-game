@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+#inputBox {
+  background-color: rgba(50, 50, 50, 0.7); /* Semi-transparent background */
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+  border: 1px solid rgba(153, 153, 153, 0.5); /* Light border */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  color: white;
+  font-family: Arial, sans-serif; /* Base font */
+}
+
+#notification {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.logo {
+  width: 100px; /* Adjust logo size as needed */
+  margin-bottom: 15px;
+}
+
+.game-title, #status {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  outline: none;
+
+}
+
+.btns {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db; /* Adjust button color */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #2980b9; /* Darker shade on hover */
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  margin-top: 10px;
+  display: block;
+}
+
+a:hover {
+  color: #ccc;
+}

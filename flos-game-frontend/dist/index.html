@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flos-game</title>
+    <script type="module" crossorigin src="/assets/index-BuYyZkRc.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-4uX6akjI.css">
+  </head>
+  <body>
+    <canvas class="webgl"></canvas>
+    <div id="notification"></div>
+    <div id="inputBox">
+      <img src="/assets/logo-BELZu5NU.jpg" alt="Game Logo" class="logo">
+      <h1 class="game-title">Multi-Player Card Game</h1>
+        <label for="gameCode" id="code-lable">Game Code:</label>
+        <input type="text" id="gameCode" name="gameCode" required>
+        <br>
+        <h1 id="status"></h1>
+        <div class="btns">
+          <button id="create" value="create">Create Game</button>
+          <button id="join" value="join">Join Game</button>
+        </div>
+        <br>
+        <a href="https://github.com/ahmedhsin/flos-game" target="_blank">View on Github</a>
+        <a href="https://www.linkedin.com/in/ahmedhsin" target="_blank">Developed by Ahmed Mubarak</a>
+    </div>
+    
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js" integrity="sha384-Gr6Lu2Ajx28mzwyVR8CFkULdCU7kMlZ9UthllibdOSo6qAiN+yXNHqtgdTvFXMT4" crossorigin="anonymous"></script>
+    <script>
+      const socket = io("localhost:3000", { autoConnect: false });
+      socket.connect()
+    </script>
+  </body>
+</html>
