@@ -20,6 +20,32 @@ function sleep(ms) {
     });
 }
 
+function isMobile() {
+  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  return regex.test(navigator.userAgent);
+}
+
+mobileOri();
+function mobileOri(){
+
+    if (isMobile()){
+
+        document.getElementById('game-mode-prompt').style.display = 'flex'
+        document.getElementById('enter-game-button').addEventListener('click', () => {
+            var elem = document.documentElement
+            if (elem.requestFullscreen)
+                elem.requestFullscreen();
+            else if(elem.webkitRequestFullscreen)
+                elem.webkitRequestFullscreen();
+            screen.orientation.lock("landscape")
+            document.getElementById('game-mode-prompt').style.display = 'none'
+
+        })
+    }
+}
+
+
+
 document.getElementById('join').addEventListener('click', ()=>{
     handelClick('join')
 })
@@ -107,6 +133,7 @@ socket.on('update-ui-finish', (winnerIndex, score)=>{
 })
 socket.on("init game", async (data, pIndex) => {
     removeInputBox();
+    setMainCard(scene);
     playerIndex = pIndex;
     if (playerIndex == 1){
         camera.rotation.z = Math.PI
