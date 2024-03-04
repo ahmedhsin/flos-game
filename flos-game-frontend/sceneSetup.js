@@ -25,13 +25,28 @@ scene.add(camera);
 renderer.setSize(sizes.width, sizes.height);
 renderer.render(scene, camera);
 
-window.addEventListener('resize', () => {
-  sizes.width = window.innerWidth
-  sizes.height = window.innerHeight
-  camera.aspect = sizes.width/sizes.height
-  renderer.setSize(sizes.width, sizes.height)
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1000))
-})
+const oldFov = camera.fov;
+function handleResize() {
+  const newWidth = window.innerWidth;
+  const newHeight = window.innerHeight;
+
+  camera.aspect = newWidth / newHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(newWidth, newHeight);
+  renderer.setPixelRatio(window.devicePixelRatio)
+  if (window.innerWidth < window.innerHeight) {
+    camera.fov = 100;
+    camera.updateProjectionMatrix();
+  }else{
+    const aspectRatio = newHeight / newWidth;
+    camera.fov = oldFov;
+    camera.updateProjectionMatrix();
+  }
+}
+handleResize();
+window.addEventListener('resize', handleResize)
+window.addEventListener('orientationchange', handleResize)
 
 const raycaster = new THREE.Raycaster();
 

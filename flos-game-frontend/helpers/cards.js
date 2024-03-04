@@ -15,7 +15,12 @@ const emojiSounds = {
   'sad': new Audio('music/sad.mp3'),
   'angery': new Audio('music/angery.mp3')
 }
-
+const emojiPositionsP = {
+  sad: 5,
+  happy: 8,
+  angery: 12,
+   
+}
 
 function createEmoji(width, height, x, emoji, playerIndex) {
   const texture = new THREE.TextureLoader().load(`emojis/${emoji}.png`);
@@ -24,15 +29,24 @@ function createEmoji(width, height, x, emoji, playerIndex) {
   const plan = new THREE.PlaneGeometry(width, height);
   const materials = new THREE.MeshBasicMaterial({ map: texture, transparent: true, alphaTest: 0.5, depthWrite: false })
   const emojiObj = new THREE.Mesh(plan, materials);
-  emojiObj.position.x = x;
+  if(screen.orientation.type === 'portrait-primary' || screen.orientation.type === 'portrait-secondary'){
+    emojiObj.position.x = emojiPositionsP[emoji]
+    if (playerIndex === 0 ) emojiObj.position.y = -20;
+    else emojiObj.position.y = 20;
+  }else{
+    emojiObj.position.x = x;
+  }
   if (playerIndex == 1) {
     emojiObj.rotation.z = Math.PI;
+  } else {
+
   }
   emojiObj.name = emoji;
   emojiObj.isEmoji = true;
   globalCards[emoji] = emojiObj;
   return emojiObj
 }
+
 
 function setEmojis(playerIndex, scene){
   const sad = createEmoji(4,4, -16, 'sad', playerIndex);
