@@ -6,9 +6,9 @@ const port = process.env.PORT || 4000;
 const httpServer = http.createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: ["https://ahmedhsin.github.io"],
+    origin: *,
     methods: ["GET", "POST"],
-    credentials: true
+    //credentials: true
   }
 })
 
