@@ -5,6 +5,7 @@
 
 Flos is a multiplayer playing card game built with a focus on smooth performance and accessibility across devices. It leverages modern web technologies to deliver an engaging and interactive experience.
 
+
 **Key Technologies:**
 
 -   **Frontend:**  Vanilla JavaScript, Three.js, GSAP
